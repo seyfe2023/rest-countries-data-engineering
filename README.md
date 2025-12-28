@@ -1,21 +1,25 @@
-REST Countries Data Engineering Pipeline
+# **REST Countries Data Engineering Pipeline** #
 
-End-to-end ETL pipeline using Apache Airflow, Python, PostgreSQL, and Docker
+End-to-end ETL pipeline using **Apache Airflow, Python, PostgreSQL, and Docker**
 
 This project demonstrates a production-style data engineering workflow that ingests country data from a public API, processes it, and loads it into a relational data warehouse.
 The pipeline is fully orchestrated with Apache Airflow, containerized with Docker, and designed to reflect real-world data engineering practices.
 
-Key Features
 
-End-to-End ETL: Automated extraction, transformation, and loading.
+# **Key Features**
 
-Orchestration: Apache Airflow with retries and task logging.
 
-Data Modeling: Staging (JSONB) to Dimensional modeling in PostgreSQL.
+**End-to-End ETL:** Automated extraction, transformation, and loading.
 
-Containerization: Fully Dockerized environment for easy deployment.
+**Orchestration:** Apache Airflow with retries and task logging.
 
-Architecture Overview
+**Data Modeling:** Staging (JSONB) to Dimensional modeling in PostgreSQL.
+
+**Containerization:** Fully Dockerized environment for easy deployment.
+
+
+
+# **Architecture Overview**
 
 ┌──────────────────────┐
 │  REST Countries API  │
@@ -52,7 +56,8 @@ Architecture Overview
 └──────────────────────┘
 
 
-Airflow DAG Design
+
+# **Airflow DAG Design**
 
 DAG: rest_countries_etl
 Schedule: Daily (@daily)
@@ -68,7 +73,8 @@ create_tables
       ▼
      load
 
-Project Structure
+
+# **Project Structure**
 
 rest-countries-de/
 │
@@ -93,7 +99,8 @@ rest-countries-de/
 └── README.md
 
 
-Data Model
+
+# **Data Model**
 
 Staging Table – stg_countries_raw
 
