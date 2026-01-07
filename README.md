@@ -2,25 +2,25 @@
 
 End-to-end ETL pipeline using **Apache Airflow, Python, PostgreSQL, and Docker**
 
-This project demonstrates a production-style data engineering workflow that ingests country data from a public API, processes it, and loads it into a relational data warehouse.
-The pipeline is fully orchestrated with Apache Airflow, containerized with Docker, and designed to reflect real-world data engineering practices.
+This project demonstrates a production-style **data engineering workflow** that ingests country data from a **public API,** processes it, and loads it into a **relational data warehouse.**
+The pipeline is fully orchestrated with **Apache Airflow,** containerized with **Docker,** and designed to reflect real-world data engineering practices.
 
 
 # **Key Features**
 
+```
+* End-to-End ETL: Automated extraction, transformation, and loading.
 
-**End-to-End ETL:** Automated extraction, transformation, and loading.
+* Orchestration: Apache Airflow with retries and task logging.
 
-**Orchestration:** Apache Airflow with retries and task logging.
+* Data Modeling: Staging (JSONB) to Dimensional modeling in PostgreSQL.
 
-**Data Modeling:** Staging (JSONB) to Dimensional modeling in PostgreSQL.
-
-**Containerization:** Fully Dockerized environment for easy deployment.
-
+* Containerization: Fully Dockerized environment for easy deployment.
+```
 
 
 # **Architecture Overview**
-
+```
 ┌──────────────────────┐
 │  REST Countries API  │
 └─────────┬────────────┘
@@ -55,10 +55,10 @@ The pipeline is fully orchestrated with Apache Airflow, containerized with Docke
 │  - Monitoring        │
 └──────────────────────┘
 
-
+```
 
 # **Airflow DAG Design**
-
+```
 DAG: rest_countries_etl
 Schedule: Daily (@daily)
 
@@ -72,10 +72,10 @@ create_tables
       │
       ▼
      load
-
+```
 
 # **Project Structure**
-
+```
 rest-countries-de/
 │
 ├── dags/
@@ -83,8 +83,8 @@ rest-countries-de/
 │
 ├── src/
 │   ├── extract.py                    # API ingestion
-│   ├── transform.py                 # Data cleaning & normalization
-│   └── load.py                      # Database loading
+│   ├── transform.py                  # Data cleaning & normalization
+│   └── load.py                       # Database loading
 │
 ├── sql/
 │   └── create_tables.sql             # DDL (staging & dimensions)
@@ -97,12 +97,12 @@ rest-countries-de/
 ├── requirements.txt                  # Python dependencies
 ├── .env                              # Environment variables
 └── README.md
-
+```
 
 
 # **Data Model**
 
-Staging Table – stg_countries_raw
+**Staging Table – stg_countries_raw**
 
 | Column      | Type      | Description            |
 | ----------- | --------- | ---------------------- |
@@ -110,7 +110,9 @@ Staging Table – stg_countries_raw
 | payload     | JSONB     | Raw API response       |
 | ingested_at | TIMESTAMP | Load timestamp         |
 
-Dimension Table – dim_country
+&nbsp;
+
+**Dimension Table – dim_country**
 
 | Column       | Description        |
 | ------------ | ------------------ |
@@ -121,14 +123,16 @@ Dimension Table – dim_country
 | population   | Population count   |
 | area         | Country area (km²) |
 
+&nbsp;
 
-How to Run Locally
+# **How to Run Locally**
+```
 1. Start Services:
    docker compose up -d
 2. Access Airflow:
    Go to http://localhost:8080. Default credentials: admin / admin.
 3. Verify Data:
    SELECT COUNT(*) FROM dim_country;
-
+```
 
    
